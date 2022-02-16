@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/complex-reimf",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Return the real and imaginary components of a single-precision complex floating-point number.",
   "license": "Apache-2.0",
   "author": {
