@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2021 The Stdlib Authors.
@@ -16,28 +16,29 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 2.0
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { Complex64 } from '@stdlib/types/object';
 
 /**
-* Return the real and imaginary components of a single-precision complex floating-point number.
+* Returns the real and imaginary components of a single-precision complex floating-point number.
 *
-* @module @stdlib/complex-reimf
+* @param z - complex number
+* @returns real and imaginary components
 *
 * @example
-* var Complex64 = require( '@stdlib/complex-float32' );
-* var reimf = require( '@stdlib/complex-reimf' );
+* var Complex64 = require( `@stdlib/complex/float32` );
 *
 * var z = new Complex64( 5.0, 3.0 );
 *
 * var out = reimf( z );
 * // returns <Float32Array>[ 5.0, 3.0 ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function reimf( z: Complex64 ): Float32Array;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = reimf;
