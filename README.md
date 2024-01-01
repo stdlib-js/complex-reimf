@@ -45,14 +45,30 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/complex-reimf
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import reimf from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-reimf@esm/index.mjs';
+var reimf = require( '@stdlib/complex-reimf' );
 ```
 
 #### reimf( z )
@@ -60,7 +76,7 @@ import reimf from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-reimf@esm/index
 Returns the **real** and **imaginary** components of a single-precision complex floating-point number.
 
 ```javascript
-import Complex64 from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-float32@esm/index.mjs';
+var Complex64 = require( '@stdlib/complex-float32' );
 
 var z = new Complex64( 5.0, 3.0 );
 var out = reimf( z );
@@ -87,16 +103,11 @@ var out = reimf( z );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="module">
-
-import Complex64 from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-float32@esm/index.mjs';
-import randu from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@esm/index.mjs';
-import round from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-round@esm/index.mjs';
-import reimf from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-reimf@esm/index.mjs';
+```javascript
+var Complex64 = require( '@stdlib/complex-float32' );
+var randu = require( '@stdlib/random-base-randu' );
+var round = require( '@stdlib/math-base-special-round' );
+var reimf = require( '@stdlib/complex-reimf' );
 
 var out;
 var re;
@@ -111,10 +122,6 @@ for ( i = 0; i < 100; i++ ) {
     out = reimf( z );
     console.log( '%s => %d, %d', z.toString(), out[ 0 ], out[ 1 ] );
 }
-
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -123,7 +130,105 @@ for ( i = 0; i < 100; i++ ) {
 
 <!-- C interface documentation. -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/complex/reimf.h"
+```
+
+#### stdlib_reimf( z, \*re, \*im )
+
+Returns the real and imaginary components of a single-precision complex floating-point number.
+
+```c
+#include "stdlib/complex/float32.h"
+
+stdlib_complex64_t z = stdlib_complex64( 5.0f, 2.0f );
+
+// ...
+
+float re;
+float im;
+
+stdlib_reimf( z, &re, &im );
+```
+
+The function accepts the following arguments:
+
+-   **z**: `[in] stdlib_complex64_t` single-precision complex floating-point number.
+-   **re**: `[out] float*` destination for real component.
+-   **im**: `[out] float*` destination for imaginary component.
+
+```c
+void stdlib_reimf( const stdlib_complex64_t z, float *re, float *im );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/complex/reimf.h"
+#include "stdlib/complex/float32.h"
+#include <stdio.h>
+
+int main( void ) {
+    const stdlib_complex64_t x[] = {
+        stdlib_complex64( 5.0f, 2.0f ),
+        stdlib_complex64( -2.0f, 1.0f ),
+        stdlib_complex64( 0.0f, -0.0f ),
+        stdlib_complex64( 0.0f/0.0f, 0.0f/0.0f )
+    };
+
+    float re;
+    float im;
+    int i;
+    for ( i = 0; i < 4; i++ ) {
+        stdlib_reimf( x[ i ], &re, &im );
+        printf( "reimf(v) = %f, %f\n", re, im );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <!-- Section to include cited references. If references are included, add a horizontal rule *before* the section. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
 
@@ -158,7 +263,7 @@ for ( i = 0; i < 100; i++ ) {
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -175,7 +280,7 @@ See [LICENSE][stdlib-license].
 
 ## Copyright
 
-Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
+Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 </section>
 
@@ -220,11 +325,11 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/complex/imagf]: https://github.com/stdlib-js/complex-imagf/tree/esm
+[@stdlib/complex/imagf]: https://github.com/stdlib-js/complex-imagf
 
-[@stdlib/complex/realf]: https://github.com/stdlib-js/complex-realf/tree/esm
+[@stdlib/complex/realf]: https://github.com/stdlib-js/complex-realf
 
-[@stdlib/complex/reim]: https://github.com/stdlib-js/complex-reim/tree/esm
+[@stdlib/complex/reim]: https://github.com/stdlib-js/complex-reim
 
 <!-- </related-links> -->
 
